@@ -1,0 +1,30 @@
+$side-menu-width: 80px;
+
+.main {
+  display: flex;
+  position: relative;
+  width: 100%;
+
+  &__side-menu {
+    position: relative;
+    height: 100%;
+    min-width: $side-menu-width;
+    max-width: $side-menu-width;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    background-color: red;
+  }
+
+  &__container {
+    width: 100%;
+
+    &__header {
+      position: sticky;
+      top: 0;
+      background-color: blue;
+      height: 80px;
+      width: 100%;
+    }
+  }
+}

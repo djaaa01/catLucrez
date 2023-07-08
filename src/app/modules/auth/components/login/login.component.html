@@ -8,6 +8,7 @@
       <div class="login__container__form">
         <div class="login__container__form__item">
           <input
+            [(ngModel)]="email"
             class="input"
             placeholder="Email"
             autocomplete="new-email"
@@ -16,6 +17,7 @@
         </div>
         <div class="login__container__form__item">
           <input
+            [(ngModel)]="password"
             class="input"
             placeholder="Password"
             autocomplete="new-password"
@@ -24,7 +26,7 @@
         </div>
       </div>
       <div class="login__container__action">
-        <div class="btn btn--primary">Log In</div>
+        <div (click)="onLogin()" class="btn btn--primary">Log In</div>
       </div>
     </div>
   </div>
