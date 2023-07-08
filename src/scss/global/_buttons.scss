@@ -1,0 +1,16 @@
+.btn {
+  height: 54px;
+  font-weight: 700;
+  user-select: none;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 50px;
+
+  &--primary {
+    background-color: $primary-color;
+  }
+}
