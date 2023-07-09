@@ -1,4 +1,4 @@
-$side-menu-width: 80px;
+@import "../../../scss/global/variables";
 
 .main {
   display: flex;
@@ -8,20 +8,23 @@ $side-menu-width: 80px;
   &__side-menu {
     position: relative;
     height: 100%;
-    min-width: $side-menu-width;
-    max-width: $side-menu-width;
+    min-width: $side-menu-header-size;
+    max-width: $side-menu-header-size;
     height: 100vh;
     position: sticky;
     top: 0;
+    z-index: 2;
   }
 
   &__container {
+    position: relative;
+    z-index: 1;
     width: 100%;
 
     &__header {
       position: sticky;
       top: 0;
-      height: $side-menu-width;
+      height: $side-menu-header-size;
       width: 100%;
     }
   }

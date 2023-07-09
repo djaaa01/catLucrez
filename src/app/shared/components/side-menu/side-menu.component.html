@@ -1,0 +1,31 @@
+<div class="side-menu">
+  <div class="side-menu__top">
+    <img draggable="false" src="../../../../assets/images/logo.svg" alt="" />
+  </div>
+  <div class="side-menu__bottom">
+    <div class="side-menu__bottom__pages">
+      <div
+        class="side-menu__item"
+        [routerLink]="['/home']"
+        [routerLinkActive]="['side-menu__item--active']"
+      >
+        <app-home-icon></app-home-icon>
+      </div>
+      <div
+        class="side-menu__item"
+        [routerLink]="['/notes']"
+        [routerLinkActive]="['side-menu__item--active']"
+      >
+        <app-note-icon></app-note-icon>
+      </div>
+    </div>
+    <div class="side-menu__bottom__logout">
+      <img
+        (click)="onLogout()"
+        draggable="false"
+        src="../../../../assets/images/logout-icon.svg"
+        alt="Logout"
+      />
+    </div>
+  </div>
+</div>
