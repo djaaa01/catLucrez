@@ -13,7 +13,6 @@ $side-menu-width: 80px;
     height: 100vh;
     position: sticky;
     top: 0;
-    background-color: red;
   }
 
   &__container {
@@ -22,8 +21,7 @@ $side-menu-width: 80px;
     &__header {
       position: sticky;
       top: 0;
-      background-color: blue;
-      height: 80px;
+      height: $side-menu-width;
       width: 100%;
     }
   }

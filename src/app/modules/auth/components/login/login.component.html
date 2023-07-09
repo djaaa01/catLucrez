@@ -26,7 +26,13 @@
         </div>
       </div>
       <div class="login__container__action">
-        <div (click)="onLogin()" class="btn btn--primary">Log In</div>
+        <div
+          [class.loading]="isLoading"
+          (click)="onLogin()"
+          class="btn btn--primary"
+        >
+          Log In
+        </div>
       </div>
     </div>
   </div>
