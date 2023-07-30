@@ -1,0 +1,95 @@
+<div class="register-wrapper">
+  <div class="register">
+    <div class="register__logo">
+      <img src="../../../../../assets/images/logo.svg" alt="" />
+      <span>{{ "REGISTER" | translate }}</span>
+    </div>
+    <div class="register__container">
+      <div [formGroup]="registerForm" class="register__container__form">
+        <div class="register__container__form__item">
+          <input
+            formControlName="email"
+            class="input"
+            autocomplete="false"
+            [class.input--invalid]="
+              registerForm.get('email')?.invalid &&
+              registerForm.get('email')?.touched
+            "
+            [placeholder]="'EMAIL' | translate"
+            (ngModelChange)="onEmail()"
+            autocomplete="new-email"
+            type="email"
+          />
+        </div>
+        <div class="register__container__form__item">
+          <input
+            formControlName="password"
+            class="input"
+            autocomplete="false"
+            [class.input--invalid]="
+              registerForm.get('password')?.invalid &&
+              registerForm.get('password')?.touched
+            "
+            [placeholder]="'PASSWORD' | translate"
+            autocomplete="new-password"
+            type="password"
+          />
+        </div>
+        <div class="register__container__form__item">
+          <input
+            formControlName="confirmPassword"
+            class="input"
+            autocomplete="false"
+            [class.input--invalid]="
+              registerForm.get('confirmPassword')?.touched &&
+              registerForm.hasError('passwordMismatch')
+            "
+            [placeholder]="'CONFIRM_PASSWORD' | translate"
+            autocomplete="new-confirm-password"
+            type="password"
+          />
+        </div>
+        <div class="register__container__form__item">
+          <select
+            formControlName="accountType"
+            (ngModelChange)="onAccountType()"
+            [class.input--invalid]="
+              registerForm.get('accountType')?.invalid &&
+              registerForm.get('accountType')?.touched
+            "
+            [class.input--select--disabled]="isReferralId"
+            (keydown)="isReferralId ? $event.preventDefault() : ''"
+            class="input input--select"
+          >
+            <option [value]="AccountType.ParentUser">
+              {{ "MANAGER_USER" | translate }}
+            </option>
+            <option [value]="AccountType.User">
+              {{ "NORMAL_USER" | translate }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="isUser" class="register__container__form__item">
+          <input
+            [readonly]="isReferralId"
+            formControlName="referralId"
+            class="input"
+            autocomplete="false"
+            [class.input--invalid]="
+              registerForm.get('referralId')?.invalid &&
+              registerForm.get('referralId')?.touched
+            "
+            [placeholder]="'REFERRAL_ID' | translate"
+            autocomplete="new-referral-id"
+            type="text"
+          />
+        </div>
+      </div>
+      <div class="register__container__action">
+        <div (click)="onRegister()" class="btn btn--primary">
+          {{ "REGISTER_BUTTON" | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,19 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   constructor(private translateService: TranslateService) {
     this.translateService.setDefaultLang('en');
-    this.translateService.use('en');
+    this.translateService.use('ro');
+    this.updatePageTitle();
+  }
+
+  private updatePageTitle() {
+    this.translateService
+      .get('APP_NAME')
+      .subscribe((translatedTitle: string) => {
+        this.setPageTitle(translatedTitle);
+      });
+  }
+
+  private setPageTitle(title: string) {
+    document.title = title;
   }
 }

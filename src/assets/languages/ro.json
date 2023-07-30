@@ -1,7 +1,13 @@
 {
-    "APP_NAME": "catLucrez",
+    "APP_NAME": "câtLucrez",
     "EMAIL": "Email",
     "PASSWORD": "Parolă",
+    "CONFIRM_PASSWORD": "Confirmați parola",
     "LOGIN_BUTTON": "Conectare",
-    "SEARCH_INPUT": "Căutare..."
+    "REFERRAL_ID": "Referral ID",
+    "REGISTER": "Înregistrează-te",
+    "REGISTER_BUTTON": "Creare cont",
+    "SEARCH_INPUT": "Căutare...",
+    "PARENT_USER": "Manager",
+    "NORMAL_USER": "Utilizator"
 }
