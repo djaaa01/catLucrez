@@ -6,11 +6,18 @@ import { AppComponent } from './app.component';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
-import {  provideAuth } from '@angular/fire/auth';
+import { provideAuth } from '@angular/fire/auth';
 import { getAuth } from '@firebase/auth';
 import { MainModule } from './modules/main/main.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, '../assets/languages/', '.json');
+}
 
 const firebaseConfig = {
   apiKey: 'AIzaSyC7CFQWATLWn_uo3gYG7P6p4gy9sH_30kA',
@@ -26,6 +33,14 @@ const firebaseConfig = {
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
     AppRoutingModule,
     AuthModule,
     MainModule,

@@ -7,6 +7,12 @@
   border: unset;
   padding: 0 30px;
   font-size: 16px;
+  border: 1px solid transparent;
+  transition: all 0.1s ease-in;
+
+  &:focus {
+    border-color: $primary-color;
+  }
 
   &--gray {
     background-color: $contrast-color;

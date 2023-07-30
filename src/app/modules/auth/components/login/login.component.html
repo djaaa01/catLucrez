@@ -2,15 +2,16 @@
   <div class="login">
     <div class="login__logo">
       <img src="../../../../../assets/images/logo.svg" alt="" />
-      <span>catLucrez</span>
+      <span>{{ "APP_NAME" | translate }}</span>
     </div>
+
     <div class="login__container">
       <div class="login__container__form">
         <div class="login__container__form__item">
           <input
             [(ngModel)]="email"
             class="input"
-            placeholder="Email"
+            [placeholder]="'EMAIL' | translate"
             autocomplete="new-email"
             type="email"
           />
@@ -19,7 +20,7 @@
           <input
             [(ngModel)]="password"
             class="input"
-            placeholder="Password"
+            [placeholder]="'PASSWORD' | translate"
             autocomplete="new-password"
             type="password"
           />
@@ -31,7 +32,7 @@
           (click)="onLogin()"
           class="btn btn--primary"
         >
-          Log In
+          {{ "LOGIN_BUTTON" | translate }}
         </div>
       </div>
     </div>

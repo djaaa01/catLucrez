@@ -6,6 +6,7 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { HomeIconComponent } from './icons/home-icon/home-icon.component';
 import { NoteIconComponent } from './icons/note-icon/note-icon.component';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -14,11 +15,12 @@ import { RouterModule } from '@angular/router';
     HomeIconComponent,
     NoteIconComponent,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TranslateModule],
   exports: [
     FormsModule,
     HeaderComponent,
     RouterModule,
+    TranslateModule,
     SideMenuComponent,
     HomeIconComponent,
     NoteIconComponent,
