@@ -15,6 +15,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NotifierModule } from 'angular-notifier';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -44,6 +45,17 @@ const firebaseConfig = {
       },
     }),
     AppRoutingModule,
+    NotifierModule,
+    NotifierModule.withConfig({
+      position: {
+        horizontal: {
+          position: 'right',
+        },
+        vertical: {
+          position: 'top',
+        },
+      },
+    }),
     AuthModule,
     MainModule,
     SharedModule,

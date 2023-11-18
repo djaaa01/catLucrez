@@ -86,7 +86,11 @@
         </div>
       </div>
       <div class="register__container__action">
-        <div (click)="onRegister()" class="btn btn--primary">
+        <div
+          [class.loading]="isLoading"
+          (click)="onRegister()"
+          class="btn btn--primary"
+        >
           {{ "REGISTER_BUTTON" | translate }}
         </div>
       </div>

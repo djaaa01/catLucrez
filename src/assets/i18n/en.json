@@ -9,5 +9,8 @@
     "REGISTER_BUTTON": "Register",
     "SEARCH_INPUT": "Search...",
     "MANAGER_USER": "Manager",
-    "NORMAL_USER": "User"
+    "NORMAL_USER": "User",
+    "EMAIL_USED": "Email is already in use. Please use a different email.",
+    "GENERAL_BACKEND_ERROR": "Error",
+    "REGISTRATION_SUCCESSFUL": "Registration successful! Your account has been created successfully."
 }
