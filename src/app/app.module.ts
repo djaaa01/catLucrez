@@ -17,7 +17,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, '../assets/languages/', '.json');
+  return new TranslateHttpLoader(http);
 }
 
 const firebaseConfig = {
