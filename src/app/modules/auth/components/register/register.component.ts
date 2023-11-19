@@ -104,19 +104,19 @@ export class RegisterComponent implements OnInit {
       this.isLoading = true;
       this.authService
         .register(
-          this.registerForm.controls.email.value,
-          this.registerForm.controls.password.value
+          this.registerForm.controls['email'].value,
+          this.registerForm.controls['password'].value
         )
         .then(
           (response) => {
             const userDetails = new UserDetails();
-            userDetails.email = this.registerForm.controls.email.value;
+            userDetails.email = this.registerForm.controls['email'].value;
             userDetails.userTypeId =
-              this.registerForm.controls.accountType.value;
+              this.registerForm.controls['accountType'].value;
             userDetails.uid = response.user.uid;
-            if (this.registerForm.controls?.referralId?.value) {
+            if (this.registerForm.controls?.['referralId']?.value) {
               userDetails.referralId =
-                this.registerForm.controls.referralId.value;
+                this.registerForm.controls['referralId'].value;
             }
 
             this.authService.setUserDetails(userDetails).then(() => {
