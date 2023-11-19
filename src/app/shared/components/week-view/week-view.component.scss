@@ -1,0 +1,70 @@
+@import "../../../../scss/global/variables";
+
+.week-view {
+  height: 88px;
+  padding: 16px 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 16px 16px 16px 16px;
+  border: 1px solid $input-color;
+  user-select: none;
+
+  &__prev,
+  &__next {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    cursor: pointer;
+    border-right: 1px solid $input-color;
+  }
+
+  &__next {
+    border-right: unset;
+    border-left: 1px solid $input-color;
+    app-arrow-icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__week {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    &__item {
+      flex: 1;
+      display: flex;
+      gap: 4px;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      cursor: pointer;
+      height: 100%;
+      border-right: 1px solid $input-color;
+
+      &:last-child {
+        border-right: unset;
+      }
+
+      &__day,
+      &__date {
+        width: fit-content;
+      }
+
+      &__date {
+        padding: 4px 12px;
+        border-radius: 16px;
+        text-align: center;
+
+        &--active {
+          background-color: $primary-color;
+          color: $text-color-active;
+        }
+      }
+    }
+  }
+}

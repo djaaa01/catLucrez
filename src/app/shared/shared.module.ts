@@ -7,6 +7,8 @@ import { HomeIconComponent } from './icons/home-icon/home-icon.component';
 import { NoteIconComponent } from './icons/note-icon/note-icon.component';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { WeekViewComponent } from './components/week-view/week-view.component';
+import { ArrowIconComponent } from './icons/arrow-icon/arrow-icon.component';
 
 @NgModule({
   declarations: [
@@ -14,17 +16,21 @@ import { TranslateModule } from '@ngx-translate/core';
     SideMenuComponent,
     HomeIconComponent,
     NoteIconComponent,
+    WeekViewComponent,
+    ArrowIconComponent,
   ],
   imports: [CommonModule, RouterModule, TranslateModule],
   exports: [
     FormsModule,
     HeaderComponent,
     RouterModule,
+    WeekViewComponent,
     ReactiveFormsModule,
     TranslateModule,
     SideMenuComponent,
     HomeIconComponent,
     NoteIconComponent,
+    ArrowIconComponent,
   ],
 })
 export class SharedModule {}
