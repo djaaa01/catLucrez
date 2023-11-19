@@ -7,11 +7,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
   border-radius: 50px;
+  color: $text-color;
 
   &--primary {
     background-color: $primary-color;
+    color: $text-color-contrast;
+  }
+
+  &--secondary {
+    border: 1px solid $input-color;
   }
 
   &:hover {

@@ -1,22 +1,45 @@
 @import "../../../../../scss/global/variables";
 
 .home {
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &__info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &__title {
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      &__actions {
+        .btn {
+          width: 200px;
+        }
+      }
+    }
+  }
+
   &__info {
     &__no-result {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        margin-top: 88px;
-        font-weight: 700;
-        font-size: 24px;
-        color: $input-color;
-        user-select: none;
-        gap: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 88px;
+      font-weight: 700;
+      font-size: 24px;
+      color: $input-color;
+      user-select: none;
+      gap: 16px;
 
-        img {
-            width: 40px;
-        }
+      img {
+        width: 40px;
+      }
     }
   }
 }

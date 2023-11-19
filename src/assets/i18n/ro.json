@@ -13,5 +13,7 @@
     "EMAIL_USED": "Emailul este deja în folosință. Vă rugăm să utilizați o adresă de email diferită.",
     "GENERAL_BACKEND_ERROR": "Eroare",
     "REGISTRATION_SUCCESSFUL": "Înregistrare reușită! Contul tău a fost creat cu succes.",
-    "NO_RESULT": "Nu s-au găsit rezultate"
+    "NO_RESULT": "Nu s-au găsit rezultate",
+    "ADD_PROJECT": "Adaugă proiect",
+    "HOME": "Acasă"
 }
