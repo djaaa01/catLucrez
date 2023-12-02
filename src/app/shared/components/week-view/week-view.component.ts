@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import * as moment from 'moment';
 import { Day } from '../../core/models/day.model';
 
@@ -8,7 +8,9 @@ import { Day } from '../../core/models/day.model';
   styleUrls: ['./week-view.component.scss'],
 })
 export class WeekViewComponent implements OnInit {
+  @Input() isDaySelect: boolean = false;
   @Output() onSelectedDate = new EventEmitter<Day>();
+  @Output() onFirstDayOfWeek = new EventEmitter<Day>();
 
   firstDayOfWeek = moment().startOf('isoWeek');
   weekDays: Day[] = [];
@@ -16,13 +18,6 @@ export class WeekViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.showWeekDays();
-    this.onSelectedDate.emit({
-      day: moment().format('dddd'),
-      month: moment().format('MMMM'),
-      date: moment().format('DD'),
-      year: moment().format('yyyy'),
-      unformatDate: moment(),
-    });
   }
 
   showWeekDays(): void {
@@ -44,6 +39,14 @@ export class WeekViewComponent implements OnInit {
         ),
       });
     }
+
+    this.onFirstDayOfWeek.emit({
+      day: this.firstDayOfWeek.format('dddd'),
+      month: this.firstDayOfWeek.format('MMMM'),
+      date: this.firstDayOfWeek.format('DD'),
+      year: this.firstDayOfWeek.format('yyyy'),
+      unformatDate: this.firstDayOfWeek,
+    });
   }
 
   showNextWeek(): void {

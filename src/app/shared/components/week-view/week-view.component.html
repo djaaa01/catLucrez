@@ -5,8 +5,9 @@
   <div class="week-view__week">
     <div
       *ngFor="let item of weekDays"
-      (click)="onDay(item)"
+      (click)="isDaySelect && onDay(item)"
       class="week-view__week__item"
+      [class.day-select]="isDaySelect"
     >
       <div class="week-view__week__item__day">
         <span>{{ item.day }}</span>

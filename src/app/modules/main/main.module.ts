@@ -4,13 +4,13 @@ import { CommonModule } from '@angular/common';
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { HomeComponent } from './components/home/home.component';
+import { ProjectsComponent } from './components/projects/projects.component';
 import { NotesComponent } from './components/notes/notes.component';
 
 @NgModule({
   declarations: [
     MainComponent,
-    HomeComponent,
+    ProjectsComponent,
     NotesComponent
   ],
   imports: [CommonModule, MainRoutingModule, SharedModule],

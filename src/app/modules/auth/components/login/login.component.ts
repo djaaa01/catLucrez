@@ -16,14 +16,14 @@ export class LoginComponent {
     private readonly authService: AuthService,
     private readonly router: Router
   ) {}
-  
+
 	@HostListener('window:keyup.enter', ['$event', 'undefined'])
 	onLogin(): void {
 		if (this.email && this.password) {
       this.isLoading = true;
 			this.authService.login(this.email, this.password).then(() => {
         this.isLoading = false;
-				this.router.navigate(['/home']);
+				this.router.navigate(['/projects']);
 			});
 		}
 	}
