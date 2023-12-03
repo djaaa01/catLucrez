@@ -5,13 +5,15 @@
         <span>{{ "PROJECTS" | translate }}</span>
       </div>
       <div class="projects__header__info__actions">
-        <div class="btn btn--secondary">
+        <div (click)="addProject()" class="btn btn--secondary">
           {{ "ADD_PROJECT" | translate }}
         </div>
       </div>
     </div>
     <div class="projects__header__week-view">
-      <app-week-view (onFirstDayOfWeek)="onFirstDayOfWeek($event)"></app-week-view>
+      <app-week-view
+        (onFirstDayOfWeek)="onFirstDayOfWeek($event)"
+      ></app-week-view>
     </div>
   </div>
   <div class="projects__info">
