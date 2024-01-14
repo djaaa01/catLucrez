@@ -15,9 +15,13 @@
     "REGISTRATION_SUCCESSFUL": "Registration successful! Your account has been created successfully.",
     "NO_RESULT": "No Results Found",
     "ADD_PROJECT": "Add project",
-    "HOME": "Home",
+    "PROJECTS": "Projects",
+    "SELECT_COMPANY": "Select Company",
+    "ADD_COMPANY": "Add Company",
+    "PROJECT_NAME": "Project Name",
+    "COMPANY_NAME": "Company Name",
+    "INSERT_PROJECT": "Insert Project",
     "GENERAL_ERROR": "Something went wrong. Please contact the administrator.",
     "INVALID_PASSWORD": "Invalid Password.",
     "EMAIL_NOT_FOUND": "Email Not Found."
-
 }

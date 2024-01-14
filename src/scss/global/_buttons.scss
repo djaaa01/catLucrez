@@ -9,6 +9,7 @@
   align-items: center;
   border-radius: 50px;
   color: $text-color;
+  transition: all 0.1s ease-in;
 
   &--primary {
     background-color: $primary-color;
@@ -21,5 +22,9 @@
 
   &:hover {
     opacity: 0.8;
+  }
+
+  &:active {
+    border-color: $primary-color;
   }
 }

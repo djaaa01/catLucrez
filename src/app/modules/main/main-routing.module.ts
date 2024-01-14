@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main.component';
-import { HomeComponent } from './components/home/home.component';
+import { ProjectsComponent } from './components/projects/projects.component';
 import { NotesComponent } from './components/notes/notes.component';
 
 const routes: Routes = [
@@ -10,14 +10,14 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       {
-        path: 'home',
-        component: HomeComponent,
+        path: 'projects',
+        component: ProjectsComponent,
       },
       {
         path: 'notes',
         component: NotesComponent,
       },
-      { path: '**', redirectTo: '/home', pathMatch: 'full' },
+      { path: '**', redirectTo: '/projects', pathMatch: 'full' },
     ],
   },
 ];

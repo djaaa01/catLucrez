@@ -1,0 +1,102 @@
+<div class="modal">
+  <div class="modal__header">
+    <div class="modal__header__title">
+      <span>{{ "ADD_PROJECT" | translate }}</span>
+    </div>
+    <div (click)="onClose()" class="modal__header__exite">
+      <app-x-icon></app-x-icon>
+    </div>
+  </div>
+  <div class="modal__body">
+    <div [formGroup]="projectForm" class="add-project">
+      <div class="add-project__company">
+        <div class="add-project__company__tab">
+          <label class="radion-buttons"
+            >{{ "SELECT_COMPANY" | translate }}
+            <input
+              formControlName="isSelectCompany"
+              [value]="true"
+              type="radio"
+              name="isSelectCompany"
+            />
+            <span class="checkmark"></span>
+          </label>
+          <label class="radion-buttons"
+            >{{ "ADD_COMPANY" | translate }}
+            <input
+              formControlName="isSelectCompany"
+              [value]="false"
+              type="radio"
+              name="isSelectCompany"
+            />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div
+          *ngIf="projectForm.get('isSelectCompany')?.value"
+          class="add-project__company__select"
+        >
+          <select
+            formControlName="selectedCompany"
+            [class.input--invalid]="
+              projectForm.get('selectedCompany')?.invalid &&
+              projectForm.get('selectedCompany')?.touched
+            "
+            class="input input--select input--select--border"
+          >
+            <option [value]="'arpad'">Arpad SRL</option>
+            <option [value]="'IBM'">IBM</option>
+          </select>
+        </div>
+        <div
+          *ngIf="!projectForm.get('isSelectCompany')?.value"
+          class="add-project__company__create"
+        >
+          <input
+            formControlName="addedCompany"
+            [class.input--invalid]="
+              projectForm.get('addedCompany')?.invalid &&
+              projectForm.get('addedCompany')?.touched
+            "
+            [placeholder]="'COMPANY_NAME' | translate"
+            class="input input--border-gray"
+          />
+        </div>
+      </div>
+      <div class="add-project__projects">
+        <div formArrayName="items" class="add-project__projects__names">
+          <div
+            *ngFor="let item of items.controls; let i = index"
+            [formGroupName]="i"
+            class="add-project__projects__names__item"
+          >
+            <input
+              formControlName="projectName"
+              [class.input--invalid]="
+                item.get('projectName')?.hasError('required') &&
+                item.get('projectName')?.touched
+              "
+              [placeholder]="'PROJECT_NAME' | translate"
+              class="input input--border-gray"
+            />
+            <app-x-icon
+              *ngIf="i !== 0"
+              (click)="items.removeAt(i)"
+              class="remove-item"
+            ></app-x-icon>
+          </div>
+          <div class="add-project__projects__names__item">
+            <div (click)="addItem()" class="btn btn--secondary">
+              {{ "INSERT_PROJECT" | translate }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal__actions">
+    <div (click)="onCreateProject()" class="btn btn--primary">
+      {{ "ADD_PROJECT" | translate }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+.add-project {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .input {
+    height: 42px;
+  }
+
+  .input--border-gray {
+    height: 40px;
+    width: calc(100% - 66px);
+  }
+
+  .input--select {
+    background-position: right 20px top 15px;
+  }
+
+  &__company {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__tab {
+      font-size: 14px;
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  &__projects {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__names {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      &__item {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        .remove-item {
+          user-select: none;
+          cursor: pointer;
+          position: absolute;
+          right: 10px;
+        }
+
+        .btn {
+          height: 40px;
+        }
+      }
+    }
+  }
+}

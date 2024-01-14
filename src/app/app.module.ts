@@ -16,6 +16,11 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NotifierModule } from 'angular-notifier';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MAT_DIALOG_DEFAULT_OPTIONS,
+  MatDialogModule,
+} from '@angular/material/dialog';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -45,6 +50,7 @@ const firebaseConfig = {
       },
     }),
     AppRoutingModule,
+    MatDialogModule,
     NotifierModule,
     NotifierModule.withConfig({
       position: {
@@ -62,8 +68,15 @@ const firebaseConfig = {
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    NoopAnimationsModule,
   ],
-  providers: [{ provide: FIREBASE_OPTIONS, useValue: firebaseConfig }],
+  providers: [
+    { provide: FIREBASE_OPTIONS, useValue: firebaseConfig },
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS,
+      useValue: { autoFocus: false },
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

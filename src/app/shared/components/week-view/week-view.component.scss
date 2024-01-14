@@ -42,7 +42,6 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      cursor: pointer;
       height: 100%;
       border-right: 1px solid $input-color;
 
@@ -67,4 +66,8 @@
       }
     }
   }
+}
+
+.day-select {
+  cursor: pointer;
 }

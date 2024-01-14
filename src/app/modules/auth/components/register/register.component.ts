@@ -127,7 +127,7 @@ export class RegisterComponent implements OnInit {
                 this.translateService.instant('REGISTRATION_SUCCESSFUL')
               );
               setTimeout(() => {
-                this.router.navigate(['/home']);
+                this.router.navigate(['/projects']);
               }, 200);
             });
           },

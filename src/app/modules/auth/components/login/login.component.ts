@@ -28,7 +28,7 @@ export class LoginComponent {
       this.authService.login(this.email, this.password).then(
         () => {
           this.isLoading = false;
-          this.router.navigate(['/home']);
+          this.router.navigate(['/projects']);
         },
         (error) => {
           console.log(error)

@@ -1,0 +1,41 @@
+.cdk-global-overlay-wrapper {
+  overflow: auto;
+  pointer-events: auto;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 16px !important;
+}
+
+.modal {
+  width: 600px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    &__title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    &__exite {
+      cursor: pointer;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+
+    .btn {
+      height: 40px;
+    }
+  }
+}

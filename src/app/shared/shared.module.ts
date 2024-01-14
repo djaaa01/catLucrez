@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { WeekViewComponent } from './components/week-view/week-view.component';
 import { ArrowIconComponent } from './icons/arrow-icon/arrow-icon.component';
+import { ProjectIconComponent } from './icons/project-icon/project-icon.component';
+import { XIconComponent } from './icons/x-icon/x-icon.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { ArrowIconComponent } from './icons/arrow-icon/arrow-icon.component';
     NoteIconComponent,
     WeekViewComponent,
     ArrowIconComponent,
+    ProjectIconComponent,
+    XIconComponent,
   ],
   imports: [CommonModule, RouterModule, TranslateModule],
   exports: [
@@ -31,6 +35,8 @@ import { ArrowIconComponent } from './icons/arrow-icon/arrow-icon.component';
     HomeIconComponent,
     NoteIconComponent,
     ArrowIconComponent,
+    ProjectIconComponent,
+    XIconComponent,
   ],
 })
 export class SharedModule {}
