@@ -15,5 +15,8 @@
     "REGISTRATION_SUCCESSFUL": "Înregistrare reușită! Contul tău a fost creat cu succes.",
     "NO_RESULT": "Nu s-au găsit rezultate",
     "ADD_PROJECT": "Adaugă proiect",
-    "HOME": "Acasă"
+    "HOME": "Acasă",
+    "GENERAL_ERROR": "Ceva a mers greșit. Vă rugăm să contactați administratorul.",
+    "INVALID_PASSWORD": "Parolă Invalidă.",
+    "EMAIL_NOT_FOUND": "Emailul nu a fost găsit."
 }

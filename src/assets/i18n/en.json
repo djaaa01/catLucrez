@@ -15,5 +15,9 @@
     "REGISTRATION_SUCCESSFUL": "Registration successful! Your account has been created successfully.",
     "NO_RESULT": "No Results Found",
     "ADD_PROJECT": "Add project",
-    "HOME": "Home"
+    "HOME": "Home",
+    "GENERAL_ERROR": "Something went wrong. Please contact the administrator.",
+    "INVALID_PASSWORD": "Invalid Password.",
+    "EMAIL_NOT_FOUND": "Email Not Found."
+
 }

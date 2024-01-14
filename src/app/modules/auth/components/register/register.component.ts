@@ -11,6 +11,7 @@ import { AuthService } from '../../core/services/auth.service';
 import { UserDetails } from 'src/app/shared/core/models/user-details.model';
 import { NotifierService } from 'angular-notifier';
 import { TranslateService } from '@ngx-translate/core';
+import { HelperService } from 'src/app/shared/core/services/helper.service';
 
 @Component({
   selector: 'app-register',
@@ -31,7 +32,8 @@ export class RegisterComponent implements OnInit {
     private readonly router: Router,
     private readonly translateService: TranslateService,
     private readonly notifier: NotifierService,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private readonly helperService: HelperService
   ) {
     this.registerForm = this.fb.group(
       {
@@ -131,19 +133,10 @@ export class RegisterComponent implements OnInit {
           },
           (error) => {
             this.isLoading = false;
-            if (error.code === 'auth/email-already-in-use') {
-              this.notifier.notify(
-                'error',
-                this.translateService.instant('EMAIL_USED')
-              );
-            } else {
-              this.notifier.notify(
-                'error',
-                `${this.translateService.instant('EMAIL_USED')}: ${
-                  error.message
-                }`
-              );
-            }
+            this.notifier.notify(
+              'error',
+              this.helperService.getErrorMessage(error.code)
+            );
           }
         );
     } else {
