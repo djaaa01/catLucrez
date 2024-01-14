@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Observable, map, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-add-project',
@@ -8,8 +14,9 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./add-project.component.scss'],
 })
 export class AddProjectComponent implements OnInit {
-  addedCompany: string;
   projectForm: FormGroup;
+  options: string[] = ['One', 'Two', 'Three'];
+  filteredOptions: Observable<string[]>;
 
   constructor(
     private readonly dialogRef: MatDialogRef<AddProjectComponent>,
@@ -18,41 +25,33 @@ export class AddProjectComponent implements OnInit {
 
   ngOnInit(): void {
     this.projectForm = this.fb.group({
-      isSelectCompany: true,
-      selectedCompany: ['', Validators.required],
-      addedCompany: '',
+      companyName: ['', Validators.required],
       items: this.fb.array([]),
     });
 
     this.addItem();
-    this.setValidators();
+
+    this.filteredOptions = this.projectForm.controls[
+      'companyName'
+    ].valueChanges.pipe(
+      startWith(''),
+      map((value) => this._filter(value || ''))
+    );
   }
 
-  setValidators(): void {
-    this.projectForm
-      .get('isSelectCompany')
-      ?.valueChanges.subscribe((value: boolean) => {
-        const addedCompanyControl = this.projectForm.get('addedCompany');
-        const selectedCompanyControl = this.projectForm.get('selectedCompany');
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
 
-        if (!value) {
-          addedCompanyControl?.setValidators([Validators.required]);
-          selectedCompanyControl?.clearValidators();
-        } else {
-          addedCompanyControl?.clearValidators();
-          selectedCompanyControl?.setValidators([Validators.required]);
-        }
-
-        addedCompanyControl?.updateValueAndValidity();
-        selectedCompanyControl?.updateValueAndValidity();
-      });
+    return this.options.filter((option) =>
+      option.toLowerCase().includes(filterValue)
+    );
   }
 
   get items(): FormArray {
     return this.projectForm.get('items') as FormArray;
   }
 
-  addItem() {
+  addItem(): void {
     this.items.push(this.createItem());
   }
 
@@ -62,7 +61,7 @@ export class AddProjectComponent implements OnInit {
     });
   }
 
-  markFormGroupTouched(formGroup: FormGroup) {
+  markFormGroupTouched(formGroup: FormGroup): void {
     Object.values(formGroup.controls).forEach((control) => {
       if (control instanceof FormGroup) {
         this.markFormGroupTouched(control);

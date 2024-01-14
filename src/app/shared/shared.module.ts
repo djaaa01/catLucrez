@@ -11,6 +11,7 @@ import { WeekViewComponent } from './components/week-view/week-view.component';
 import { ArrowIconComponent } from './icons/arrow-icon/arrow-icon.component';
 import { ProjectIconComponent } from './icons/project-icon/project-icon.component';
 import { XIconComponent } from './icons/x-icon/x-icon.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { XIconComponent } from './icons/x-icon/x-icon.component';
     RouterModule,
     WeekViewComponent,
     ReactiveFormsModule,
+    MatAutocompleteModule,
     TranslateModule,
     SideMenuComponent,
     HomeIconComponent,

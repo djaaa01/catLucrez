@@ -10,58 +10,25 @@
   <div class="modal__body">
     <div [formGroup]="projectForm" class="add-project">
       <div class="add-project__company">
-        <div class="add-project__company__tab">
-          <label class="radion-buttons"
-            >{{ "SELECT_COMPANY" | translate }}
-            <input
-              formControlName="isSelectCompany"
-              [value]="true"
-              type="radio"
-              name="isSelectCompany"
-            />
-            <span class="checkmark"></span>
-          </label>
-          <label class="radion-buttons"
-            >{{ "ADD_COMPANY" | translate }}
-            <input
-              formControlName="isSelectCompany"
-              [value]="false"
-              type="radio"
-              name="isSelectCompany"
-            />
-            <span class="checkmark"></span>
-          </label>
-        </div>
-        <div
-          *ngIf="projectForm.get('isSelectCompany')?.value"
-          class="add-project__company__select"
-        >
-          <select
-            formControlName="selectedCompany"
-            [class.input--invalid]="
-              projectForm.get('selectedCompany')?.invalid &&
-              projectForm.get('selectedCompany')?.touched
-            "
-            class="input input--select input--select--border"
+        <input
+          class="input input--border-gray"
+          [class.input--invalid]="
+            projectForm.get('companyName')?.hasError('required') &&
+            projectForm.get('companyName')?.touched
+          "
+          type="text"
+          [placeholder]="'COMPANY_NAME' | translate"
+          matInput
+          formControlName="companyName"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+            >{{ option }}</mat-option
           >
-            <option [value]="'arpad'">Arpad SRL</option>
-            <option [value]="'IBM'">IBM</option>
-          </select>
-        </div>
-        <div
-          *ngIf="!projectForm.get('isSelectCompany')?.value"
-          class="add-project__company__create"
-        >
-          <input
-            formControlName="addedCompany"
-            [class.input--invalid]="
-              projectForm.get('addedCompany')?.invalid &&
-              projectForm.get('addedCompany')?.touched
-            "
-            [placeholder]="'COMPANY_NAME' | translate"
-            class="input input--border-gray"
-          />
-        </div>
+        </mat-autocomplete>
       </div>
       <div class="add-project__projects">
         <div formArrayName="items" class="add-project__projects__names">
