@@ -23,5 +23,7 @@
     "INSERT_PROJECT": "Insert Project",
     "GENERAL_ERROR": "Something went wrong. Please contact the administrator.",
     "INVALID_PASSWORD": "Invalid Password.",
-    "EMAIL_NOT_FOUND": "Email Not Found."
+    "EMAIL_NOT_FOUND": "Email Not Found.",
+    "OPERATION_SUCCESSFUL": "The operation was successful."
+    
 }

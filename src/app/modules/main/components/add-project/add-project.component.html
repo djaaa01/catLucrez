@@ -62,7 +62,11 @@
     </div>
   </div>
   <div class="modal__actions">
-    <div (click)="onCreateProject()" class="btn btn--primary">
+    <div
+      (click)="onCreateProject()"
+      [class.loading]="isLoading"
+      class="btn btn--primary"
+    >
       {{ "ADD_PROJECT" | translate }}
     </div>
   </div>

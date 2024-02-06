@@ -23,5 +23,6 @@
     "INSERT_PROJECT": "Inserează Proiect",
     "GENERAL_ERROR": "Ceva a mers greșit. Vă rugăm să contactați administratorul.",
     "INVALID_PASSWORD": "Parolă Invalidă.",
-    "EMAIL_NOT_FOUND": "Emailul nu a fost găsit."
+    "EMAIL_NOT_FOUND": "Emailul nu a fost găsit.",
+    "OPERATION_SUCCESSFUL": "Operația a fost un succes."
 }

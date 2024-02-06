@@ -2,6 +2,9 @@
   <div (click)="showPreviousWeek()" class="week-view__prev">
     <app-arrow-icon></app-arrow-icon>
   </div>
+  <div (click)="showNextWeek()" class="week-view__next">
+    <app-arrow-icon></app-arrow-icon>
+  </div>
   <div class="week-view__week">
     <div
       *ngFor="let item of weekDays"
@@ -19,8 +22,5 @@
         <span>{{ item.month + " " + item.date }}</span>
       </div>
     </div>
-  </div>
-  <div (click)="showNextWeek()" class="week-view__next">
-    <app-arrow-icon></app-arrow-icon>
   </div>
 </div>

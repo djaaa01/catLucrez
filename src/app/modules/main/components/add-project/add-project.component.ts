@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormArray,
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Observable, map, startWith } from 'rxjs';
+import { ProjectService } from '../../core/services/project.service';
+import { AuthService } from 'src/app/modules/auth/core/services/auth.service';
+import { NotifierService } from 'angular-notifier';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-project',
@@ -17,9 +16,15 @@ export class AddProjectComponent implements OnInit {
   projectForm: FormGroup;
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
+  isLoading = false;
 
   constructor(
     private readonly dialogRef: MatDialogRef<AddProjectComponent>,
+    private readonly projectService: ProjectService,
+    private readonly authService: AuthService,
+    private readonly notifier: NotifierService,
+    private readonly translateService: TranslateService,
+
     private fb: FormBuilder
   ) {}
 
@@ -74,6 +79,50 @@ export class AddProjectComponent implements OnInit {
   onCreateProject(): void {
     if (this.projectForm.valid) {
       console.log(this.projectForm.value);
+      this.isLoading = true;
+
+      this.projectService
+        .addCompany({
+          companyName: this.projectForm.value.companyName,
+          uid: this.authService.getCurrentUse()?.uid,
+          createdDate: new Date(),
+        })
+        .then(
+          (response) => {
+            const items: Promise<any>[] = [];
+            this.projectForm.value.items.forEach((element: any) => {
+              items.push(
+                this.projectService.addProject({
+                  companyId: response.id || '0',
+                  uid: this.authService.getCurrentUse()?.uid,
+                  projectName: element.projectName,
+                  createdDate: new Date(),
+                })
+              );
+            });
+
+            Promise.all(items).then(
+              () => {
+                this.isLoading = false;
+                this.dialogRef.close(true);
+              },
+              () => {
+                this.isLoading = false;
+                this.notifier.notify(
+                  'error',
+                  this.translateService.instant('GENETAL_ERROR')
+                );
+              }
+            );
+          },
+          () => {
+            this.isLoading = false;
+            this.notifier.notify(
+              'error',
+              this.translateService.instant('GENETAL_ERROR')
+            );
+          }
+        );
     } else {
       this.markFormGroupTouched(this.projectForm);
 

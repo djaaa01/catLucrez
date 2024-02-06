@@ -7,13 +7,15 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { AddProjectComponent } from './components/add-project/add-project.component';
+import { CompanyComponent } from './components/company/company.component';
 
 @NgModule({
   declarations: [
     MainComponent,
     ProjectsComponent,
     NotesComponent,
-    AddProjectComponent
+    AddProjectComponent,
+    CompanyComponent
   ],
   imports: [CommonModule, MainRoutingModule, SharedModule],
 })

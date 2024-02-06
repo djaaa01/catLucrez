@@ -33,8 +33,8 @@ export class AuthService {
     return createUserWithEmailAndPassword(this.fireAuth, email, password);
   }
 
-  setUserDetails(userDetails: UserDetails): Promise<any> {
-    return this.firestoreService.addCollentionData(
+  setUserDetails(userDetails: UserDetails): Promise<UserDetails> {
+    return this.firestoreService.addCollectionData<UserDetails>(
       FirestoreCollections.UserDetails,
       userDetails
     );
