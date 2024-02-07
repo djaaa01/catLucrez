@@ -4,6 +4,7 @@ import { Auth } from '@angular/fire/auth';
 import { FirestoreService } from 'src/app/shared/core/services/firestore.service';
 import { Company, Project } from '../models/company.model';
 import { FirestoreCollections } from 'src/app/shared/core/enums/firestore-colections.enum';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +27,12 @@ export class ProjectService {
     return this.firestoreService.addCollectionData<Project>(
       FirestoreCollections.Projects,
       prjectData
+    );
+  }
+
+  getCompanies(): Observable<Company[]> {
+    return this.firestoreService.getCollention<Company>(
+      FirestoreCollections.Companies
     );
   }
 }

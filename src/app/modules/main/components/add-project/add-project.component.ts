@@ -78,7 +78,6 @@ export class AddProjectComponent implements OnInit {
 
   onCreateProject(): void {
     if (this.projectForm.valid) {
-      console.log(this.projectForm.value);
       this.isLoading = true;
 
       this.projectService
