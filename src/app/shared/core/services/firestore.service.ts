@@ -10,20 +10,17 @@ import {
   where,
   docData,
   deleteDoc,
+  WhereFilterOp,
 } from '@angular/fire/firestore';
 import { FirestoreCollections } from '../enums/firestore-colections.enum';
 import { Observable } from 'rxjs';
-import { AuthService } from 'src/app/modules/auth/core/services/auth.service';
+import { CustomCondition } from '../models/customCondition.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirestoreService {
-  constructor(
-    private firestore: Firestore,
-    private readonly authService: AuthService
-  ) {}
-  currentUser = this.authService.getCurrentUse()?.uid;
+  constructor(private firestore: Firestore) {}
 
   async addCollectionData<T>(
     collectionName: FirestoreCollections,
@@ -34,10 +31,27 @@ export class FirestoreService {
     return dataRef as T;
   }
 
-  getCollention<T>(collectionName: string): Observable<T[]> {
+  getCollention<T>(collectionName: string, uid: string): Observable<T[]> {
     const q = query(
       collection(this.firestore, collectionName),
-      where('userUID', '==', this.currentUser)
+      where('uid', '==', uid)
+    );
+    const getColectionData = collectionData(q, { idField: 'id' });
+
+    return getColectionData as Observable<T[]>;
+  }
+
+  getCustomCollention<T>(
+    collectionName: string,
+    customCondition: CustomCondition
+  ): Observable<T[]> {
+    const q = query(
+      collection(this.firestore, collectionName),
+      where(
+        customCondition.firstField as string,
+        customCondition.condition as WhereFilterOp,
+        customCondition.secondField as string | string[]
+      )
     );
     const getColectionData = collectionData(q, { idField: 'id' });
 

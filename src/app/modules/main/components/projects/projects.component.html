@@ -1,4 +1,4 @@
-<div class="projects">
+<div [class.loading]="isLoading" class="projects">
   <div class="projects__header">
     <div class="projects__header__info">
       <div class="projects__header__info__title">
@@ -10,15 +10,11 @@
         </div>
       </div>
     </div>
-    <div class="projects__header__week-view">
-      <!-- <app-week-view
-        (onFirstDayOfWeek)="onFirstDayOfWeek($event)"
-      ></app-week-view> -->
-      <app-company></app-company>
-      <app-company></app-company>
-    </div>
   </div>
-  <div class="projects__info">
+  <div *ngIf="companies" class="projects__info">
+    <div *ngFor="let item of companies" class="projects__info__item">
+      <app-company [item]="item"></app-company>
+    </div>
     <!-- <div class="home__info__no-result">
       <img src="../../../../assets/images/search-icon.svg" alt="">
       <span>{{ 'NO_RESULT' | translate }}</span>

@@ -25,8 +25,8 @@ export class AuthService {
     return signInWithEmailAndPassword(this.fireAuth, email, password);
   }
 
-  getCurrentUse(): FirebaseUser | null {
-    return this.fireAuth.currentUser;
+  getCurrentUse(): FirebaseUser {
+    return this.fireAuth.currentUser as FirebaseUser;
   }
 
   register(email: string, password: string): Promise<UserCredential> {

@@ -7,4 +7,10 @@ export class Day {
   year: string;
   unformatDate: moment.Moment;
   selected?: boolean;
+  counter?: Counter;
+}
+
+export class Counter {
+  hours: number;
+  minutes: number;
 }

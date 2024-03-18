@@ -5,6 +5,7 @@ import { FirestoreService } from 'src/app/shared/core/services/firestore.service
 import { Company, Project } from '../models/company.model';
 import { FirestoreCollections } from 'src/app/shared/core/enums/firestore-colections.enum';
 import { Observable } from 'rxjs';
+import { CustomCondition } from 'src/app/shared/core/models/customCondition.model';
 
 @Injectable({
   providedIn: 'root',
@@ -30,9 +31,21 @@ export class ProjectService {
     );
   }
 
-  getCompanies(): Observable<Company[]> {
+  getCompanies(uid: string): Observable<Company[]> {
     return this.firestoreService.getCollention<Company>(
-      FirestoreCollections.Companies
+      FirestoreCollections.Companies, uid
+    );
+  }
+
+  getProjects(companyIdsList: string[]): Observable<Project[]> {
+    const customCondition = new CustomCondition();
+    customCondition.firstField = 'companyId';
+    customCondition.secondField = companyIdsList;
+    customCondition.condition = 'in';
+
+    return this.firestoreService.getCustomCollention<Project>(
+      FirestoreCollections.Projects,
+      customCondition
     );
   }
 }

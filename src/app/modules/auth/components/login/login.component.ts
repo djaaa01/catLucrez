@@ -31,7 +31,6 @@ export class LoginComponent {
           this.router.navigate(['/projects']);
         },
         (error) => {
-          console.log(error)
           this.isLoading = false;
           this.notifier.notify('error', this.helperService.getErrorMessage(error.code));
         }

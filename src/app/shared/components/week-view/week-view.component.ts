@@ -10,7 +10,7 @@ import { Day } from '../../core/models/day.model';
 export class WeekViewComponent implements OnInit {
   @Input() isDaySelect: boolean = false;
   @Output() onSelectedDate = new EventEmitter<Day>();
-  @Output() onFirstDayOfWeek = new EventEmitter<Day>();
+  @Output() onWeek = new EventEmitter<Day[]>();
 
   firstDayOfWeek = moment().startOf('isoWeek');
   weekDays: Day[] = [];
@@ -39,14 +39,8 @@ export class WeekViewComponent implements OnInit {
         ),
       });
     }
-
-    this.onFirstDayOfWeek.emit({
-      day: this.firstDayOfWeek.format('dddd'),
-      month: this.firstDayOfWeek.format('MMMM'),
-      date: this.firstDayOfWeek.format('DD'),
-      year: this.firstDayOfWeek.format('yyyy'),
-      unformatDate: this.firstDayOfWeek,
-    });
+    
+    this.onWeek.emit(this.weekDays);
   }
 
   showNextWeek(): void {
