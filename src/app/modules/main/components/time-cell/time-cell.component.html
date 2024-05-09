@@ -1,0 +1,33 @@
+<div class="modal">
+  <div class="modal__header">
+    <div class="modal__header__title">
+      <span>{{ "ADD_TIME_ENTRY" | translate }}</span>
+    </div>
+    <div (click)="onClose()" class="modal__header__exite">
+      <app-x-icon></app-x-icon>
+    </div>
+  </div>
+  <div class="modal__body">
+    <div class="time-entry">
+      <div class="time-entry__element">
+        <input
+          [placeholder]="'TIME_ENTRY' | translate"
+          class="input input--border-gray"
+        />
+      </div>
+      <div class="time-entry__element">
+        <span>{{ "EXAMPLE_FORMAT" | translate }}:  {{ exampleFormat }}</span>
+        <span>{{ "REMAINING_TIME" | translate }}: {{ remainingTime }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="modal__actions">
+    <div
+      (click)="onSubmit()"
+      [class.loading]="isLoading"
+      class="btn btn--primary"
+    >
+      {{ "ADD" | translate }}
+    </div>
+  </div>
+</div>

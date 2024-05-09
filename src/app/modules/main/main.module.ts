@@ -8,6 +8,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { AddProjectComponent } from './components/add-project/add-project.component';
 import { CompanyComponent } from './components/company/company.component';
+import { TimeCellComponent } from './components/time-cell/time-cell.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CompanyComponent } from './components/company/company.component';
     ProjectsComponent,
     NotesComponent,
     AddProjectComponent,
-    CompanyComponent
+    CompanyComponent,
+    TimeCellComponent
   ],
   imports: [CommonModule, MainRoutingModule, SharedModule],
 })

@@ -24,5 +24,10 @@
     "GENERAL_ERROR": "Ceva a mers greșit. Vă rugăm să contactați administratorul.",
     "INVALID_PASSWORD": "Parolă Invalidă.",
     "EMAIL_NOT_FOUND": "Emailul nu a fost găsit.",
-    "OPERATION_SUCCESSFUL": "Operația a fost un succes."
+    "OPERATION_SUCCESSFUL": "Operația a fost un succes.",
+    "ADD_TIME_ENTRY": "Add time entry",
+    "TIME_ENTRY": "Time entry",
+    "ADD": "Adaugă",
+    "EXAMPLE_FORMAT": "Example format",
+    "REMAINING_TIME": "Remaining time"
 }

@@ -16,7 +16,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NotifierModule } from 'angular-notifier';
-import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MAT_DIALOG_DEFAULT_OPTIONS,
@@ -76,7 +76,7 @@ const firebaseConfig = {
     { provide: FIREBASE_OPTIONS, useValue: firebaseConfig },
     {
       provide: MAT_DIALOG_DEFAULT_OPTIONS,
-      useValue: { autoFocus: false },
+      useValue: { autoFocus: false, position: { top: '72px' } },
     },
   ],
   bootstrap: [AppComponent],

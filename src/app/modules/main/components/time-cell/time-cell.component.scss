@@ -1,0 +1,16 @@
+.input--border-gray {
+  height: 40px;
+  width: calc(100% - 66px);
+}
+
+
+.time-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__element {
+    display: flex;
+    justify-content: space-between;
+  }
+}
