@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
 import {
   Auth,
   signInWithEmailAndPassword,
@@ -7,9 +7,10 @@ import {
   User as FirebaseUser,
   UserCredential,
 } from '@angular/fire/auth';
-import { FirestoreService } from 'src/app/shared/core/services/firestore.service';
-import { FirestoreCollections } from 'src/app/shared/core/enums/firestore-colections.enum';
-import { UserDetails } from 'src/app/shared/core/models/user-details.model';
+import {FirestoreService} from "../../../../shared/core/services/firestore.service";
+import {UserDetails} from "../../../../shared/core/models/user-details.model";
+import {FirestoreCollections} from "../../../../shared/core/enums/firestore-colections.enum";
+
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,8 @@ export class AuthService {
     private fireAuth: Auth,
     private router: Router,
     private firestoreService: FirestoreService
-  ) {}
+  ) {
+  }
 
   login(email: string, password: string): Promise<UserCredential> {
     return signInWithEmailAndPassword(this.fireAuth, email, password);
@@ -42,6 +44,7 @@ export class AuthService {
 
   async logout() {
     await this.fireAuth.signOut();
+   
     this.router.navigate(['/login']);
   }
 }
