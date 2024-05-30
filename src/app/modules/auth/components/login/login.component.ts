@@ -1,8 +1,8 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
+import { HelperService } from '../../../../shared/core/services/helper.service';
 import { NotifierService } from 'angular-notifier';
-import { HelperService } from 'src/app/shared/core/services/helper.service';
 
 @Component({
   selector: 'app-login',
@@ -14,28 +14,33 @@ export class LoginComponent {
   password: string;
   isLoading = false;
 
-  constructor(
-    private readonly authService: AuthService,
-    private readonly router: Router,
-    private readonly notifier: NotifierService,
-    private readonly helperService: HelperService
-  ) {}
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
+
+  private readonly notifier = inject(NotifierService);
+  private readonly helperService = inject(HelperService);
 
   @HostListener('window:keyup.enter', ['$event', 'undefined'])
   onLogin(): void {
-    if (this.email && this.password) {
-      this.isLoading = true;
-      this.authService.login(this.email, this.password).then(
-        () => {
-          this.isLoading = false;
-          this.router.navigate(['/projects']);
-        },
-        (error) => {
-          this.isLoading = false;
-          this.notifier.notify('error', this.helperService.getErrorMessage(error.code));
-        }
-      );
+    if (!this.email || !this.password) {
+      return;
     }
-  }
 
+    this.isLoading = true;
+
+    this.authService.login(this.email, this.password).then(
+      () => {
+        this.isLoading = false;
+
+        void this.router.navigate(['/projects']);
+      },
+      (error) => {
+        this.isLoading = false;
+        this.notifier.notify(
+          'error',
+          this.helperService.getErrorMessage(error?.code)
+        );
+      }
+    );
+  }
 }

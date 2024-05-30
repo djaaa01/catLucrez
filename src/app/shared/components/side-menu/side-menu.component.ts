@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { AuthService } from 'src/app/modules/auth/core/services/auth.service';
+import {Component} from '@angular/core';
+import {AuthService} from "../../../modules/auth/core/services/auth.service";
 
 @Component({
   selector: 'app-side-menu',
@@ -7,7 +7,8 @@ import { AuthService } from 'src/app/modules/auth/core/services/auth.service';
   styleUrls: ['./side-menu.component.scss'],
 })
 export class SideMenuComponent {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) {
+  }
 
   onLogout(): void {
     this.authService.logout();
